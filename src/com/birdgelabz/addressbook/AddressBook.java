@@ -12,21 +12,17 @@ public class AddressBook {
 		// creating the persondetail class object to add the person detail
 		PersonDetail personDetail = addPerson();
 		// person detail object give to the list
-		boolean isAdd = true;
-		while (isAdd) {
-			PersonDetail personDetail1 = AddressBook.addPerson();
-			list.add(personDetail1);
-			System.out.println("Want to add other person");
-			System.out.println("Enter 1 or 0");
-			int num = scanner.nextInt();
-			if (num == 1)
-				isAdd = true;
-			else
-				isAdd = false;
-		}
 		list.add(personDetail);
-		for (int i = 0; i < list.size(); i++) {
-			AddressBook.display(list.get(i)); // display method take the input as list and print the data
+		System.out.println("Welcome to the addressbook");
+		System.out.print("Enter the choice 1.add 2.edit");
+		int choice = scanner.nextInt();
+		switch (choice) {
+		case 1:
+			addPerson();
+			break;
+		case 2:
+			editPersonDetail();
+			break;
 		}
 
 	}
@@ -76,6 +72,55 @@ public class AddressBook {
 		long phone = scanner.nextLong();
 		PersonDetail personDetail = new PersonDetail(firstName, lastName, address, city, state, email, zip, phone);
 		return personDetail;
+	}
+
+	/**
+	 * editpersonmethod to edit the person detail
+	 */
+	public static void editPersonDetail() {
+		System.out.println("Enter the name to edit the addressbook");
+		String editName = scanner.next();
+		for (int i = 0; i < list.size(); i++) {
+			if (list.get(i).getFirstName().equals(editName)) {
+				System.out.print("Enter the below data user need to eit the addresssbook");
+				System.out.println("Press 1.firstname 2.lastname 3.address 4.city 5.state 6.email 7.zip 8.phone");
+				int choice = scanner.nextInt();
+				switch (choice) {
+				case 1:
+					System.out.println("Enter the fitsname");
+					list.get(i).setFirstName(scanner.next());
+					break;
+				case 2:
+					System.out.println("Enter the lastname");
+					list.get(i).setLastName(scanner.next());
+					break;
+				case 3:
+					System.out.println("Enter the address");
+					list.get(i).setAddress(scanner.next());
+					break;
+				case 4:
+					System.out.println("Enter the city");
+					list.get(i).setCity(scanner.next());
+					break;
+				case 5:
+					System.out.println("Enter the state");
+					list.get(i).setState(scanner.next());
+					break;
+				case 6:
+					System.out.println("Emter the email");
+					list.get(i).setEmail(scanner.next());
+					break;
+				case 7:
+					System.out.println("Enter the zip");
+					list.get(i).setZip(scanner.nextInt());
+					break;
+				case 8:
+					System.out.println("Enter the phone");
+					list.get(i).setPhone(scanner.nextInt());
+					break;
+				}
+			}
+		}
 	}
 
 	/*
