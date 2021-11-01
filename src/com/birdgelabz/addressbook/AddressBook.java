@@ -9,25 +9,30 @@ public class AddressBook {
 	private static Scanner scanner = new Scanner(System.in);
 
 	public static void main(String args[]) {
+		// adresessbook object to give the refrence to method of arralylist
+		AddressBook add = new AddressBook();
 		// creating the persondetail class object to add the person detail
 		PersonDetail personDetail = addPerson();
 		// person detail object give to the list
 		list.add(personDetail);
-		System.out.println("Welcome to the addressbook");
-		System.out.print("Enter the choice 1.add 2.edit 3.remove");
-		int choice = scanner.nextInt();
-		switch (choice) {
-		case 1:
-			addPerson();
-			break;
-		case 2:
-			editPersonDetail();
-			break;
-		case 3:
-			removePersonDetail();
-			break;
-		}
-
+		int value = 0;
+		do {
+			System.out.print("Enter the choice 1.add 2.edit 3.remove");
+			int choice = scanner.nextInt();
+			switch (choice) {
+			case 1:
+				add.addPerson();
+				break;
+			case 2:
+				add.editPersonDetail();
+				break;
+			case 3:
+				add.removePersonDetail();
+				break;
+			}
+			System.out.println("Enter the choice to adressbook");
+			value = scanner.nextInt();
+		} while (value == 1);
 	}
 
 	/*
